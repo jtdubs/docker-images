@@ -1,0 +1,5 @@
+#!/bin/sh
+
+cd /opt/CyberChef
+python -m SimpleHTTPServer 8080 > /dev/null 2>&1 &
+echo CyberChef: http://localhost:8080/
