@@ -8,7 +8,6 @@ docker run \
   -v /dev/bus/usb:/dev/bus/usb \
   -v $PWD:/mnt \
   --device /dev/snd \
-  --privileged \
   --network host \
   -h sdr \
   -it sdr:0.1 \
