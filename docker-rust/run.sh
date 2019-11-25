@@ -7,6 +7,8 @@ docker run \
   -v ~/.config:/home/user/.config:ro \
   -v $PWD:/mnt \
   --network host \
+  --cap-add=NET_ADMIN \
+  --cap-add=NET_RAW \
   -h rust \
   -it rust:0.1 \
   $*
