@@ -1,0 +1,19 @@
+FROM ubuntu-base:0.2
+
+USER root
+RUN apt-get update && \
+    apt-get install -qq -y \
+      python-pip \
+      python3-pip
+
+USER user
+
+ENV PATH /home/user/.local/bin:$PATH
+
+RUN pip3 install --upgrade pip && \
+    pip install --upgrade pip && \
+    python3 -m pip install --user virtualenv
+
+USER user
+WORKDIR /mnt
+CMD /bin/bash
