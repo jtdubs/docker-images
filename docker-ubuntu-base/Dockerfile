@@ -27,6 +27,7 @@ RUN apt-get update && \
       ca-certificates \
       git \
       iputils-ping \
+      iproute2 \
       strace \
       npm \
       nodejs
