@@ -37,5 +37,10 @@ RUN echo "user	ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
 # Run as user
 USER user
+ENV SHELL /bin/bash
+ENV USER user
+ENV EDITOR nvim
+ENV VISUAL nvim
+RUN mkdir -p /home/user/.config
 WORKDIR /mnt
 CMD /bin/bash
