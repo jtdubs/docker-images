@@ -1,7 +1,12 @@
 FROM ubuntu-base:0.2
 
 USER root
-RUN apt-get install -qq -y libxcb*
+RUN apt-get install -qq -y \
+      libxcb* \
+      xserver-xephyr \
+      xterm \
+      x11-xserver-utils \
+      x11-apps
 
 USER user
 WORKDIR /home/user
