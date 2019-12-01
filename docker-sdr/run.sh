@@ -21,5 +21,10 @@ then
     $*
 # otherwise
 else
-    docker container exec -it $CONTAINER_ID /bin/bash
+    if [ -z "$*" ]
+    then
+        docker container exec -it $CONTAINER_ID /bin/bash
+    else
+        docker container exec -it $CONTAINER_ID $*
+    fi
 fi

@@ -10,7 +10,7 @@ then
     --rm \
     -e DISPLAY=$DISPLAY \
     -v /tmp/.X11-unix:/tmp/.X11-unix \
-    -v ~/.config/nvim:/home/user/.config/nvim:ro \
+    -v ~/.config:/home/user/.config \
     -v $PWD:/mnt \
     --network host \
     --cap-add=NET_ADMIN \
@@ -21,5 +21,10 @@ then
     $*
 # otherwise
 else
-    docker container exec -it $CONTAINER_ID /bin/bash
+    if [ -z "$*" ]
+    then
+        docker container exec -it $CONTAINER_ID /bin/bash
+    else
+        docker container exec -it $CONTAINER_ID $*
+    fi
 fi
