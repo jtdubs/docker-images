@@ -1,3 +1,3 @@
 #!/bin/sh
 
-docker build -t ubuntu-base:0.2 .
+docker build -t ubuntu-base:0.3 .

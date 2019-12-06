@@ -30,7 +30,8 @@ RUN apt-get update && \
       iproute2 \
       strace \
       npm \
-      nodejs
+      nodejs \
+      bash-completion
 
 # Setup sudo
 RUN echo "user	ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers

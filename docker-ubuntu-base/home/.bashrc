@@ -116,9 +116,19 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# j
+# source ~/tools/j/j.sh
+
 # java + xmonad fix
 export _JAVA_AWT_WM_NONREPARENTING=1
 
 # editor
 export VISUAL=nvim
 export EDITOR=nvim
+
+# programming
+export PATH=$PATH:~/.local/bin
+export PATH=$PATH:~/bin
+
+export GIT_PS1_SHOWDIRTYSTATE=1
+export PS1='\[\033[38;5;006m\]\u\[\033[38;5;005m\]@\[\033[38;5;005m\]\h\[\033[38;5;007m\]:\[\033[38;5;004m\]\w\[\033[38;5;006m\]$(__git_ps1 " (%s)") \[\033[38;5;009m\]\$\[\033[00m\] '

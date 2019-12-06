@@ -1,6 +1,6 @@
 #!/bin/sh
 
-CONTAINER_ID=$(docker container ls -qf "label=ubuntu-base")
+CONTAINER_ID=$(docker container ls -qf "label=pwsh")
 
 # if not running
 if [ -z "$CONTAINER_ID" ]
@@ -10,18 +10,20 @@ then
     --rm \
     -e DISPLAY=$DISPLAY \
     -v /tmp/.X11-unix:/tmp/.X11-unix \
-    -v ~/.config/nvim:/home/user/.config/nvim:ro \
+    -v ~/.config:/home/user/.config \
     -v $PWD:/mnt \
     --network host \
-    -l ubuntu-base \
-    -h ubuntu-base \
-    -it ubuntu-base:0.3 \
+    --cap-add=NET_ADMIN \
+    --cap-add=NET_RAW \
+    -l pwsh \
+    -h pwsh \
+    -it pwsh:0.1 \
     $*
 # otherwise
 else
     if [ -z "$*" ]
     then
-        docker container exec -it $CONTAINER_ID /bin/bash
+        docker container exec -it $CONTAINER_ID pwsh
     else
         docker container exec -it $CONTAINER_ID $*
     fi
