@@ -11,6 +11,7 @@ then
     -e DISPLAY=$DISPLAY \
     -v /tmp/.X11-unix:/tmp/.X11-unix \
     -v ~/.config:/home/user/.config \
+    -v ~/.fzf:/home/user/.fzf:ro \
     -v $PWD:/mnt \
     --network host \
     --cap-add=NET_ADMIN \

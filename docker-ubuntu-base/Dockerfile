@@ -31,7 +31,8 @@ RUN apt-get update && \
       strace \
       npm \
       nodejs \
-      bash-completion
+      bash-completion \
+      fd-find
 
 # Setup sudo
 RUN echo "user	ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers

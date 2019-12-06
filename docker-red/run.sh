@@ -11,6 +11,7 @@ then
     -e DISPLAY=$DISPLAY \
     -v /tmp/.X11-unix:/tmp/.X11-unix \
     -v ~/.config/nvim:/home/user/.config/nvim:ro \
+    -v ~/.fzf:/home/user/.fzf:ro \
     -v $PWD:/mnt \
     --network host \
     -l red \
