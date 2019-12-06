@@ -15,7 +15,7 @@ then
     --network host \
     -l ee \
     -h ee \
-    -it ee:0.1 \
+    -it ee:latest \
     $*
 # otherwise
 else

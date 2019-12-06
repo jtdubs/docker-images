@@ -5,4 +5,4 @@ docker run \
   -v $PWD:/mnt \
   -h empire \
   --network host \
-  -it empire:0.1
+  -it empire:latest

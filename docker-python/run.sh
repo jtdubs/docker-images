@@ -15,7 +15,7 @@ then
     --network host \
     -l python \
     -h py \
-    -it py:0.1 \
+    -it py:latest \
     $*
 # otherwise
 else

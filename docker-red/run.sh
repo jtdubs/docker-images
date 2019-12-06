@@ -15,7 +15,7 @@ then
     --network host \
     -l red \
     -h red \
-    -it red:0.1 \
+    -it red:latest \
     $*
 # otherwise
 else

@@ -17,7 +17,7 @@ then
     --cap-add=NET_RAW \
     -l rust \
     -h rust \
-    -it rust:0.1 \
+    -it rust:latest \
     $*
 # otherwise
 else

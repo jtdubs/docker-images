@@ -1,4 +1,4 @@
-FROM ubuntu-base:0.1
+FROM ubuntu-base:latest
 
 # Install Haskell Stack
 RUN curl -sSL https://get.haskellstack.org/ | sh && \

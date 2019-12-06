@@ -15,7 +15,7 @@ then
     --network host \
     -l dotnet \
     -h dotnet \
-    -it dotnet:0.1 \
+    -it dotnet:latest \
     $*
 # otherwise
 else

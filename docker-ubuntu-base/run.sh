@@ -15,7 +15,7 @@ then
     --network host \
     -l ubuntu-base \
     -h ubuntu-base \
-    -it ubuntu-base:0.3 \
+    -it ubuntu-base:latest \
     $*
 # otherwise
 else

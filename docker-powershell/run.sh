@@ -17,7 +17,7 @@ then
     --cap-add=NET_RAW \
     -l pwsh \
     -h pwsh \
-    -it pwsh:0.1 \
+    -it pwsh:latest \
     $*
 # otherwise
 else

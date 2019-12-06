@@ -1,4 +1,4 @@
-FROM ubuntu-base:0.2
+FROM ubuntu-base:latest
 
 USER root
 RUN apt-get update && \

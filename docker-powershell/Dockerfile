@@ -1,4 +1,4 @@
-FROM ubuntu-base:0.3
+FROM ubuntu-base:latest
 
 USER root
 WORKDIR /tmp

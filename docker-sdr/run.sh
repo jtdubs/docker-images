@@ -17,7 +17,7 @@ then
     --network host \
     -l sdr \
     -h sdr \
-    -it sdr:0.1 \
+    -it sdr:latest \
     $*
 # otherwise
 else

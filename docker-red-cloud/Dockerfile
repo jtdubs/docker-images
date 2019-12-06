@@ -1,4 +1,4 @@
-FROM red:0.1
+FROM red:latest
 USER root
 
 # Update sshd

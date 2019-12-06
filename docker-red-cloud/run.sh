@@ -4,4 +4,4 @@ docker run \
   --rm \
   -h red-cloud \
   --network bridge \
-  red-cloud:0.1 \
+  red-cloud:latest \

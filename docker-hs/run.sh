@@ -15,7 +15,7 @@ then
     --network host \
     -l haskell \
     -h hs \
-    -it hs:0.1 \
+    -it hs:latest \
     $*
 # otherwise
 else
