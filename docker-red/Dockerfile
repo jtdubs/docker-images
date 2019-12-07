@@ -1,14 +1,11 @@
 FROM kalilinux/kali-rolling:latest
 
 # Install Kali base packages
-RUN apt-get update
-RUN yes no | apt-get install -y kismet-capture-common
-RUN yes no | apt-get install -y macchanger
-RUN yes 1  | apt-get install -y keyboard-configuration
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -qq -y kali-linux-full
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt-get update && apt-get install -qq -y kali-linux-full
 
 # Install additional security tools
-RUN apt-get install -y iputils-ping gobuster arachni hurl
+RUN apt-get install -y python3-pip iputils-ping gobuster arachni hurl
 
 
 WORKDIR /tmp
