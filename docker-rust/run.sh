@@ -26,7 +26,7 @@ then
 else
     if [ -z "$*" ]
     then
-        docker container exec -it $CONTAINER_ID /bin/bash
+        docker container exec -it $CONTAINER_ID /usr/bin/fish
     else
         docker container exec -it $CONTAINER_ID $*
     fi

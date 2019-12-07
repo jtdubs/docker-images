@@ -125,7 +125,10 @@ RUN apt-get update && \
       iputils-ping \
       strace \
       npm \
-      nodejs
+      nodejs \
+      bash-completion \
+      fd-find \
+      fish
 
 # Setup sudo
 RUN echo "user	ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
@@ -133,3 +136,4 @@ RUN echo "user	ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 # Work out of /mnt, which is where $PWD will be mounted
 USER user
 WORKDIR /mnt
+CMD /usr/bin/fish
