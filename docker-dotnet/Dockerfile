@@ -15,4 +15,3 @@ RUN sudo apt-get install -qq -y dotnet-sdk-3.0
 
 USER user
 WORKDIR /mnt
-CMD /bin/bash

@@ -234,4 +234,3 @@ COPY scripts/* /usr/local/bin/
 # Run as sdr user
 USER user
 WORKDIR /mnt
-CMD /bin/bash

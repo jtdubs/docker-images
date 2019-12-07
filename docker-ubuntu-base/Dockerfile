@@ -32,17 +32,20 @@ RUN apt-get update && \
       npm \
       nodejs \
       bash-completion \
-      fd-find
+      fd-find \
+      fish
 
 # Setup sudo
 RUN echo "user	ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
 # Run as user
 USER user
-ENV SHELL /bin/bash
+ENV SHELL /usr/bin/fish
 ENV USER user
 ENV EDITOR nvim
 ENV VISUAL nvim
+ENV PATH /home/user/bin:/home/user/.local/bin:/home/user/.fzf/bin:$PATH
+
 RUN mkdir -p /home/user/.config
 WORKDIR /mnt
-CMD /bin/bash
+CMD /usr/bin/fish

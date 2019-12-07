@@ -9,4 +9,3 @@ ENV PATH=/home/user/.local/bin:$PATH
 
 USER user
 WORKDIR /mnt
-CMD /bin/bash

@@ -16,4 +16,3 @@ RUN pip3 install --upgrade pip && \
 
 USER user
 WORKDIR /mnt
-CMD /bin/bash

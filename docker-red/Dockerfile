@@ -133,4 +133,3 @@ RUN echo "user	ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 # Work out of /mnt, which is where $PWD will be mounted
 USER user
 WORKDIR /mnt
-CMD /bin/bash

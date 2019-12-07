@@ -23,4 +23,3 @@ RUN rustup component add rust-analysis
 
 USER user
 WORKDIR /mnt
-CMD /bin/bash

@@ -7,19 +7,21 @@ if [ -z "$CONTAINER_ID" ]
 then
     # start it
     docker run \
-    --rm \
-    -e DISPLAY=$DISPLAY \
-    -v /tmp/.X11-unix:/tmp/.X11-unix \
-    -v ~/.config:/home/user/.config \
-    -v ~/.fzf:/home/user/.fzf:ro \
-    -v $PWD:/mnt \
-    --network host \
-    --cap-add=NET_ADMIN \
-    --cap-add=NET_RAW \
-    -l rust \
-    -h rust \
-    -it rust:latest \
-    $*
+      --rm \
+      -e DISPLAY=$DISPLAY \
+      -v /tmp/.X11-unix:/tmp/.X11-unix \
+      -v ~/.config/nvim:/home/user/.config/nvim:ro \
+      -v ~/.config/fish:/home/user/.config/fish:ro \
+      -v ~/.config/coc:/home/user/.config/coc \
+      -v ~/.fzf:/home/user/.fzf:ro \
+      -v $PWD:/mnt \
+      --network host \
+      --cap-add=NET_ADMIN \
+      --cap-add=NET_RAW \
+      -l rust \
+      -h rust \
+      -it rust:latest \
+      $*
 # otherwise
 else
     if [ -z "$*" ]

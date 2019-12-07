@@ -69,4 +69,3 @@ RUN apt-get install --no-install-recommends -qq -y \
 # Run as user
 USER user
 WORKDIR /mnt
-CMD /bin/bash
