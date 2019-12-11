@@ -10,13 +10,6 @@ ENV LC_ALL C
 RUN groupadd -g 1000 user
 RUN useradd -r -u 1000 -g user -d /home/user -m user
 
-# Populate home directories (.bashrc, etc.)
-COPY home/* /root/
-COPY home/.* /root/
-COPY home/* /home/user/
-COPY home/.* /home/user/
-RUN chown -R user:user /home/user/.*
-
 # Install essential tools
 RUN apt-get update && \
     apt-get install -qq -y \
@@ -34,6 +27,10 @@ RUN apt-get update && \
       bash-completion \
       fd-find \
       fish
+
+# Populate home directories (.bashrc, etc.)
+COPY home /root
+COPY --chown=1000:1000 home /home/user
 
 # Setup sudo
 RUN echo "user	ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
