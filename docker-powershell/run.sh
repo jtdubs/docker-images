@@ -10,6 +10,8 @@ then
       --rm \
       -e DISPLAY=$DISPLAY \
       -v /tmp/.X11-unix:/tmp/.X11-unix \
+      -v /etc/localtime:/etc/localtime:ro \
+      -v /etc/timezone:/etc/timezone:ro \
       -v ~/.config/nvim:/home/user/.config/nvim:ro \
       -v ~/.config/fish:/home/user/.config/fish:ro \
       -v ~/.config/coc:/home/user/.config/coc \
