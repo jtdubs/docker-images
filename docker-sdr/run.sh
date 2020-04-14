@@ -20,6 +20,7 @@ then
       -v $PWD:/mnt \
       --device /dev/snd \
       --network host \
+      --privileged \
       -l sdr \
       -h sdr \
       -it sdr:latest \
