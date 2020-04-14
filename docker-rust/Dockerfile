@@ -6,7 +6,8 @@ RUN apt-get install -qq -y \
       xserver-xephyr \
       xterm \
       x11-xserver-utils \
-      x11-apps
+      x11-apps \
+      cmake
 
 USER user
 WORKDIR /home/user
