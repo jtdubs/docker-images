@@ -104,10 +104,8 @@ RUN groupadd -g 1000 user
 RUN useradd -r -u 1000 -g user -d /home/user -m user
 
 # Populate home directories (.bashrc, etc.)
-COPY home/* /root/
-COPY home/.* /root/
-COPY home/* /home/user/
-COPY home/.* /home/user/
+COPY home /root
+COPY home /home/user
 RUN chown -R user:user /home/user/.*
 
 # Install essential tools
@@ -129,6 +127,14 @@ RUN apt-get update && \
 
 # Setup sudo
 RUN echo "user	ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+
+# Final setup
+ENV SHELL /usr/bin/fish
+ENV USER user
+ENV EDITOR nvim
+ENV VISUAL nvim
+ENV PATH /home/user/bin:/home/user/.local/bin:/home/user/.fzf/bin:$PATH
+RUN mkdir -p /home/user/.config
 
 # Work out of /mnt, which is where $PWD will be mounted
 USER user
