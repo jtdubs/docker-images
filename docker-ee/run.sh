@@ -16,6 +16,7 @@ then
       -v ~/.config/fish:/home/user/.config/fish:ro \
       -v ~/.config/coc:/home/user/.config/coc \
       -v ~/.fzf:/home/user/.fzf:ro \
+      -v /dev/ttyACM0:/dev/ttyACM0 \
       -v $PWD:/mnt \
       --network host \
       -l ee \
