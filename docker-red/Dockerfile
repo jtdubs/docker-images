@@ -2,7 +2,7 @@ FROM kalilinux/kali-rolling:latest
 
 # Install Kali base packages
 ENV DEBIAN_FRONTEND=noninteractive
-RUN apt-get update && apt-get install -qq -y kali-linux-full
+RUN apt-get update && apt-get install -qq -y kali-linux-default
 
 # Install additional security tools
 RUN apt-get install -y python3-pip iputils-ping gobuster arachni hurl
@@ -22,21 +22,21 @@ RUN git clone https://github.com/byt3bl33d3r/CrackMapExec && \
     cd CrackMapExec && \
     git submodule init && \
     git submodule update --recursive && \
-    pip install . && \
+    pip3 install . && \
     cd .. && \
     rm -Rf CrackMapExec
 
 # angr
-RUN git clone https://github.com/angr/angr.git && \
-    cd angr && \
-    pip3 install . && \
-    cd .. && \
-    rm -Rf angr
+# RUN git clone https://github.com/angr/angr.git && \
+#     cd angr && \
+#     pip3 install . && \
+#     cd .. && \
+#     rm -Rf angr
 
 # miasm
 RUN git clone https://github.com/cea-sec/miasm.git && \
     cd miasm && \
-    pip install . && \
+    pip3 install . && \
     cd .. && \
     rm -Rf miasm
 
@@ -54,14 +54,14 @@ RUN pip3 install monkeyhex
 WORKDIR /opt
 
 # angr examples
-RUN git clone https://github.com/angr/angr-doc
+# RUN git clone https://github.com/angr/angr-doc
 
 # pwndbg
-RUN apt-get install -y libpcrecpp0v5 libglib2.0-dev-bin libpcre16-3 libsepol1-dev libpcre2-32-0 libpcre2-posix0 uuid-dev libpcre32-3 libblkid-dev libpcre2-dev libselinux1-dev libpcre3-dev libmount-dev libglib2.0-dev
+RUN apt-get install -y libpcrecpp0v5 libglib2.0-dev-bin libpcre16-3 libsepol1-dev libpcre2-32-0 libpcre2-posix2 uuid-dev libpcre32-3 libblkid-dev libpcre2-dev libselinux1-dev libpcre3-dev libmount-dev libglib2.0-dev
 
 RUN git clone https://github.com/pwndbg/pwndbg && \
     cd pwndbg && \
-    python3 -m pip install -Ur requirements.txt && \
+    pip3 install -Ur requirements.txt && \
     echo "source $PWD/gdbinit.py" >> ~/.gdbinit
 
 # RsaCtfTool
@@ -80,7 +80,7 @@ COPY scripts/cyberchef /usr/local/bin/
 # koadic
 RUN git clone https://github.com/zerosum0x0/koadic.git && \
     cd koadic && \
-    pip install -r requirements.txt
+    pip3 install -r requirements.txt
 
 # Ghidra
 RUN wget https://ghidra-sre.org/ghidra_9.1_PUBLIC_20191023.zip && \
@@ -90,7 +90,7 @@ RUN wget https://ghidra-sre.org/ghidra_9.1_PUBLIC_20191023.zip && \
     ln -s /opt/ghidra/ghidraRun /usr/local/bin/ghidra
 
 # strace, pypy
-RUN apt-get install -y strace pypy pypy3
+RUN apt-get install -y strace pypy3
 
 
 # Set envrionment variables
