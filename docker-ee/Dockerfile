@@ -47,20 +47,20 @@ RUN mkdir -p /usr/share/desktop-directories /usr/share/icons/hicolor && \
 WORKDIR /opt
 
 # arduino IDE
-RUN wget https://downloads.arduino.cc/arduino-1.8.10-linux64.tar.xz && \
-    xz -d arduino-1.8.10-linux64.tar.xz && \
-    tar -xf arduino-1.8.10-linux64.tar && \
-    rm -f arduino-1.8.10-linux64.tar && \
-    cd arduino-1.8.10 && \
+RUN wget https://downloads.arduino.cc/arduino-1.8.12-linux64.tar.xz && \
+    xz -d arduino-1.8.12-linux64.tar.xz && \
+    tar -xf arduino-1.8.12-linux64.tar && \
+    rm -f arduino-1.8.12-linux64.tar && \
+    cd arduino-1.8.12 && \
     ./install.sh
 
 # eagle
-RUN wget https://trial2.autodesk.com/NET17SWDLD/2017/EGLPRM/ESD/Autodesk_EAGLE_9.5.1_English_Linux_64bit.tar.gz && \
-    tar -zxf Autodesk_EAGLE_9.5.1_English_Linux_64bit.tar.gz && \
-    chown -R user:user eagle-9.5.1 && \
-    rm Autodesk_EAGLE_9.5.1_English_Linux_64bit.tar.gz && \
-    cd eagle-9.5.1 && \
-    ln -s /opt/eagle-9.5.1/eagle /usr/local/bin/eagle
+RUN wget https://trial2.autodesk.com/NET17SWDLD/2017/EGLPRM/ESD/Autodesk_EAGLE_9.6.1_English_Linux_64bit.tar.gz && \
+    tar -zxf Autodesk_EAGLE_9.6.1_English_Linux_64bit.tar.gz && \
+    chown -R user:user eagle-9.6.1 && \
+    rm Autodesk_EAGLE_9.6.1_English_Linux_64bit.tar.gz && \
+    cd eagle-9.6.1 && \
+    ln -s /opt/eagle-9.6.1/eagle /usr/local/bin/eagle
 
 # kicad
 RUN apt-get install --no-install-recommends -qq -y \

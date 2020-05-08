@@ -3,7 +3,7 @@ FROM ubuntu-base:latest
 USER root
 
 # Setup Microsoft repository
-RUN wget -q https://packages.microsoft.com/config/ubuntu/19.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb && \
+RUN wget -q https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb && \
     sudo dpkg -i packages-microsoft-prod.deb && \
     rm packages-microsoft-prod.deb && \
     sudo apt-get update && \
