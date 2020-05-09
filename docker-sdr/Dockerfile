@@ -27,7 +27,7 @@ RUN apt-get install --no-install-recommends -y \
       libpulse0 \
       libpulse-dev \
       libqt5svg5-dev \
-      libqwt-dev \
+      libqwt-qt5-dev \
       libsdl1.2-dev \
       libtiff5 \
       libtiff5-dev \
@@ -42,18 +42,18 @@ RUN apt-get install --no-install-recommends -y \
       python3-pip \
       python3-pyqt5 \
       python3-setuptools \
-      python-cheetah \
-      python-comedilib \
-      python-gi-cairo \
-      python-gtk2-dev \
-      python-lxml \
-      python-mako \
-      python-numpy \
-      python-qt4 \
-      python-setuptools \
-      python-six \
-      python-wxgtk3.0 \
-      python-wxgtk3.0-dev \
+      python3-cheetah \
+      python3-comedilib \
+      python3-gi-cairo \
+#      python3-gtk2-dev \
+      python3-lxml \
+      python3-mako \
+      python3-numpy \
+#      python3-qt4 \
+      python3-setuptools \
+      python3-six \
+#      python3-wxgtk3.0 \
+#      python3-wxgtk3.0-dev \
       qt5-default \
       subversion \
       swig3.0 \
@@ -67,11 +67,10 @@ RUN apt-get install --no-install-recommends -y \
 
 # Install SoapySDR
 RUN apt-get install --no-install-recommends -y \
-      libsoapysdr0.6 \
+      libsoapysdr0.7 \
       libsoapysdr-dev \
       python3-soapysdr \
-      python-soapysdr \
-      soapysdr0.6-module-all \
+      soapysdr0.7-module-all \
       soapysdr-tools \
       uhd-soapysdr
 
@@ -80,43 +79,37 @@ RUN apt-get install --no-install-recommends -y \
       gnuradio \
       gnuradio-dev \
       gr-fosphor \
-      gr-gsm \
+      gr-fcdproplus \
       gr-iio \
       gr-limesdr \
       gr-osmosdr \
-      libgnuradio-analog3.7.13 \
-      libgnuradio-atsc3.7.13 \
-      libgnuradio-audio3.7.13 \
-      libgnuradio-blocks3.7.13 \
-      libgnuradio-channels3.7.13 \
-      libgnuradio-comedi3.7.13 \
-      libgnuradio-digital3.7.13 \
-      libgnuradio-dtv3.7.13 \
-      libgnuradio-fcd3.7.13 \
-      libgnuradio-fcdproplus3.7.11 \
-      libgnuradio-fec3.7.13 \
-      libgnuradio-fft3.7.13 \
-      libgnuradio-filter3.7.13 \
-      libgnuradio-fosphor3.7.12 \
+      gr-radar \
+      libgnuradio-analog3.8.1 \
+      libgnuradio-audio3.8.1 \
+      libgnuradio-blocks3.8.1 \
+      libgnuradio-channels3.8.1 \
+      libgnuradio-digital3.8.1 \
+      libgnuradio-dtv3.8.1 \
+      libgnuradio-fcdproplus3.8.0 \
+      libgnuradio-fec3.8.1 \
+      libgnuradio-fft3.8.1 \
+      libgnuradio-filter3.8.1 \
+      libgnuradio-fosphor3.8.0 \
       libgnuradio-hpsdr1.2 \
-      libgnuradio-iio0 \
-      libgnuradio-iqbalance3.7.11 \
-      libgnuradio-limesdr0 \
-      libgnuradio-noaa3.7.13 \
-      libgnuradio-osmosdr0.1.4 \
-      libgnuradio-pager3.7.13 \
-      libgnuradio-pmt3.7.13 \
-      libgnuradio-qtgui3.7.13 \
-      libgnuradio-radar3.7 \
-      libgnuradio-rds3.7.11 \
-      libgnuradio-runtime3.7.13 \
-      libgnuradio-trellis3.7.13 \
-      libgnuradio-uhd3.7.13 \
-      libgnuradio-video-sdl3.7.13 \
-      libgnuradio-vocoder3.7.13 \
-      libgnuradio-wavelet3.7.13 \
-      libgnuradio-wxgui3.7.13 \
-      libgnuradio-zeromq3.7.13
+      libgnuradio-iio1 \
+      libgnuradio-iqbalance3.8.0 \
+      libgnuradio-limesdr3.0.1 \
+      libgnuradio-osmosdr0.2.0 \
+      libgnuradio-pmt3.8.1 \
+      libgnuradio-qtgui3.8.1 \
+      libgnuradio-rds1 \
+      libgnuradio-runtime3.8.1 \
+      libgnuradio-trellis3.8.1 \
+      libgnuradio-uhd3.8.1 \
+      libgnuradio-video-sdl3.8.1 \
+      libgnuradio-vocoder3.8.1 \
+      libgnuradio-wavelet3.8.1 \
+      libgnuradio-zeromq3.8.1
 
 # Install inspectrum
 RUN apt-get install --no-install-recommends -y \
@@ -131,7 +124,7 @@ RUN apt-get install --no-install-recommends -y \
       audacity \
       audacity-data
 
-# soapy_power
+# Install soapy_power
 RUN pip3 install wheel && \
     pip3 install soapy-power
 
@@ -143,7 +136,7 @@ RUN git clone https://github.com/jgaeddert/liquid-dsp && \
     cd liquid-dsp && \
     ./bootstrap.sh && \
     CFLAGS="-march=native -O3" ./configure --enable-fftoverride && \
-    make -j4 && \
+    make -j8 && \
     make install && \
     ldconfig && \
     cd .. && \
@@ -160,7 +153,7 @@ RUN git clone https://github.com/xmikos/qspectrumanalyzer && \
 RUN git clone git://github.com/tedsluis/dump1090.git && \
     cd dump1090 && \
     perl -pi -e 's/-Werror//' Makefile && \
-    make -j4 && \
+    make -j8 && \
     install -m 755 -p dump1090 /usr/local/bin/ && \
     install -m 755 -p view1090 /usr/local/bin/ && \
     cd .. && \
@@ -172,19 +165,21 @@ RUN git clone --recursive https://github.com/pothosware/PothosCore.git && \
     mkdir build && \
     cd build && \
     cmake .. && \
-    make -j4 && \
+    make -j8 && \
     make install && \
     ldconfig && \
     cd ../.. && \
     rm -Rf PothosCore
 
-# Install gqrx
-RUN git clone https://github.com/csete/gqrx.git && \
+# # Install gqrx
+RUN apt-get install --no-install-recommends -y \
+      liborc-0.4-dev && \
+    git clone https://github.com/csete/gqrx.git && \
     cd gqrx && \
     mkdir build && \
     cd build && \
-    cmake -DLINUX_AUDIO_BACKEND=Portaudio .. && \
-    make -j4 && \
+    cmake -DLINUX_AUDIO_BACKEND=Gr-audio .. && \
+    make -j8 && \
     make install && \
     ldconfig && \
     cd ../.. && \
@@ -214,7 +209,7 @@ RUN git clone https://github.com/neural75/gqrx-scanner.git && \
     mkdir build && \
     cd build && \
     cmake .. && \
-    make -j4 && \
+    make -j8 && \
     make install && \
     cd ../.. && \
     rm -Rf gqrx-scanner
@@ -222,10 +217,10 @@ RUN git clone https://github.com/neural75/gqrx-scanner.git && \
 WORKDIR /opt
 
 # Install sdr-trunk
-RUN wget https://github.com/DSheirer/sdrtrunk/releases/download/v0.4.0-alpha.9/sdr-trunk-0.4.0-alpha.9-linux-x64.zip && \
-    unzip sdr-trunk-0.4.0-alpha.9-linux-x64.zip && \
-    rm sdr-trunk-0.4.0-alpha.9-linux-x64.zip && \
-    mv sdr-trunk-linux-x64 sdr-trunk && \
+RUN wget https://github.com/DSheirer/sdrtrunk/releases/download/v0.4.0/sdr-trunk-linux-x86_64-v0.4.0.zip && \
+    unzip sdr-trunk-linux-x86_64-v0.4.0.zip && \
+    rm sdr-trunk-linux-x86_64-v0.4.0.zip && \
+    mv sdr-trunk-linux-x86_64-v0.4.0 sdr-trunk && \
     ln -s /opt/sdr-trunk/bin/sdr-trunk /usr/local/bin/sdr-trunk
 
 # Scripts
